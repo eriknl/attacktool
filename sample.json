@@ -1,0 +1,34 @@
+{
+    "tools": [
+        {   
+            "name": "write_text",
+            "package": "attacktool",
+            "function": "write_text",
+            "parameters": {}
+        },
+        {   
+            "name": "execute_cmd",
+            "package": "attacktool",
+            "function": "execute_cmd",
+            "parameters": {
+                "param1": "One"
+            }
+        },
+        {   "name": "read_file",
+            "package": "attacktool",
+            "function": "read_file",
+            "parameters": {
+                "param1": "One"
+            }
+        },
+        {   "name": "execute_httpget",
+            "package": "httptool",
+            "function": "execute_httpget",
+            "parameters": {
+                "url": "http://127.0.0.1:8000/lfi.php?file=/var/poisonedlog&cmd=",
+                "proxy": "http://127.0.0.1:8080"
+            },
+            "init": "init_http"
+        }
+    ]
+}
