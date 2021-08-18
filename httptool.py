@@ -14,8 +14,8 @@ def init_http(**kwargs):
     attacktool.set_global('session', session)
 
 # Run a HTTP get adding the typed command as part of the query as set in the url tool parameter
-def execute_httpget(Command, **kwargs):
-    url = '%s%s' % (kwargs['url'], Command)
+def execute_httpget(command, **kwargs):
+    url = '%s%s' % (kwargs['url'], command)
     proxy = attacktool.get_global('proxy', None)
     session = attacktool.get_global('session', requests.session())
     r = session.get(url, proxies=proxy)

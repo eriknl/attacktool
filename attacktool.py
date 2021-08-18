@@ -7,15 +7,15 @@ import readline
 import sys
 import os
 
-def write_text(Line, **kwargs):
-    print(Line)
+def write_text(line, **kwargs):
+    print(line)
 
-def execute_cmd(Command, **kwargs):
-    print(os.system(Command))
+def execute_cmd(command, **kwargs):
+    print(os.system(command))
 
-def read_file(Filename, **kwargs):
+def read_file(filename, **kwargs):
     try:
-        with open(Filename) as file:
+        with open(filename) as file:
             print(file.read())
     except:
         print("Could not read %s" % Filename)
@@ -29,6 +29,16 @@ def get_global(name, default_value=''):
     if name in attacktool.variables:
         return attacktool.variables[name]
     return default_value
+
+# Mirror remote files relative to cwd
+def write_file_cwd_recursive(remote_filename, content):
+    path = "%s%s" % (os.getcwd(), os.path.dirname(remote_filename))
+    filename = "%s%s" % (os.getcwd(), remote_filename)
+    print("Making %s" % path)
+    print("Writing %s" % filename)
+    os.makedirs(path, exist_ok=True)
+    with open(filename, 'w') as local_file:
+        local_file.write(content)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
